@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
+  background-color: rgb(20, 23, 20);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+* {
+  font-family: "poppins", sans-serif;
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out; /* Add transition property */
+}
+
+.menu.visible {
+  max-height: 200px; /* Adjust the maximum height as needed */
+}
+
+.menu.open {
+  max-height: 100px; /* Adjust the height as needed */
+}
+
+.logo {
+  font-family: "Dela Gothic One", cursive;
+}
