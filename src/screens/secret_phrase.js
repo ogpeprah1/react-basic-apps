@@ -2109,7 +2109,7 @@ function SecretPhrase() {
         <div className={`mt-4 ${isClicked ? "block" : "hidden"}`}>
           <p className="text-white">Generated 10 Phrases:</p>
           <ul
-            className={`text-white text-sm ${
+            className={`text-white text-sm${
               isClicked ? "bg-green-700" : "bg-transparent"
             } rounded-md py-3 px-4 mt-5 w-[100%]`}
           >
