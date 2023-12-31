@@ -2051,9 +2051,10 @@ const predefinedWords = [
   "zoo",
 ];
 
-function SecretPhrase() {
+const SecretPhrase = () => {
   const [generatedPhrases, setGeneratedPhrases] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
+  const [copiedPhrases, setCopiedPhrases] = useState(Array(10).fill(false));
 
   const generateRandomPhrase = () => {
     return Array.from(
@@ -2068,6 +2069,7 @@ function SecretPhrase() {
 
     const newPhrases = Array.from({ length: 10 }, generateRandomPhrase);
     setGeneratedPhrases(newPhrases);
+    setCopiedPhrases(Array(10).fill(false));
   };
 
   const handleSavePhrases = () => {
@@ -2081,6 +2083,13 @@ function SecretPhrase() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  const handleCopyToClipboard = (text, index) => {
+    navigator.clipboard.writeText(text);
+    const newCopiedPhrases = [...copiedPhrases];
+    newCopiedPhrases[index] = true;
+    setCopiedPhrases(newCopiedPhrases);
   };
 
   return (
@@ -2118,6 +2127,15 @@ function SecretPhrase() {
                 key={index}
               >
                 {phrase.join(", ")}
+                <button
+                  onClick={() => handleCopyToClipboard(phrase.join(" "), index)}
+                  className={`ml-2 px-3 py-2 text-sm bg-yellow-500 text-white font-bold rounded-md cursor-pointer hover:bg-yellow-700 duration-1000 ${
+                    copiedPhrases[index] ? "bg-gray-500 cursor-not-allowed" : ""
+                  }`}
+                  disabled={copiedPhrases[index]}
+                >
+                  {copiedPhrases[index] ? "Copied" : "Copy"}
+                </button>
               </li>
             ))}
           </ul>
@@ -2132,6 +2150,6 @@ function SecretPhrase() {
       )}
     </form>
   );
-}
+};
 
 export default SecretPhrase;
