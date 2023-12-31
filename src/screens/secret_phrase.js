@@ -2085,36 +2085,40 @@ function SecretPhrase() {
 
   return (
     <form
-      className="px-4 py-6 rounded-lg bg-black drop-shadow-xl max-w-md w-[90vw] "
+      className={`px-4 py-6 rounded-lg bg-black drop-shadow-xl max-w-md w-[90vw] absolute left-[50%] translate-x-[-50%] ${
+        isClicked ? "top-[0%]" : "top-[50%] translate-y-[-50%]"
+      }`}
       onSubmit={submitHandler}
     >
-      <label className="text-white">Enter wallet address:</label>
+      <label className="text-white text-lg">Enter wallet address:</label>
       <br />
-
       <input
         type="text"
         placeholder="Enter wallet address"
-        className="border-solid border-black px-2 py-2 text-sm w-[100%] rounded-md mt-4 mb-4"
+        className="border-solid border-black px-3 py-3 text-md w-[100%] h-[50px] rounded-md mt-4 mb-4"
       />
       <br />
 
       <input
         type="submit"
         value="SUBMIT"
-        className="border-solid border-black px-3 py-2 text-sm bg-white font-bold rounded-md
-         mt-4 mb-4 w-[100%] cursor-pointer hover:bg-gray-200 duration-1000"
+        className="border-solid border-black px-3 py-2 text-lg text-white font-semibold rounded-md
+         mt-4 mb-4 w-[100%] h-[50px] bg-green-700 cursor-pointer hover:bg-gray-200 duration-1000"
       />
 
       {generatedPhrases.length > 0 && (
         <div className={`mt-4 ${isClicked ? "block" : "hidden"}`}>
           <p className="text-white">Generated 10 Phrases:</p>
-          <ul
-            className={`text-white text-sm${
-              isClicked ? "bg-green-700" : "bg-transparent"
-            } rounded-md py-3 px-4 mt-5 w-[100%]`}
-          >
+          <ul>
             {generatedPhrases.map((phrase, index) => (
-              <li key={index}>{phrase.join(", ")}</li>
+              <li
+                className={`text-white text-sm${
+                  isClicked ? "bg-green-700" : "bg-transparent"
+                } rounded-md py-3 px-4 mt-5 w-[100%]`}
+                key={index}
+              >
+                {phrase.join(", ")}
+              </li>
             ))}
           </ul>
           <button
