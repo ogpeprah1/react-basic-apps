@@ -2085,7 +2085,7 @@ function SecretPhrase() {
 
   return (
     <form
-      className="px-4 py-6 rounded-lg bg-black drop-shadow-xl w-[60vh]"
+      className="px-4 py-6 rounded-lg bg-black drop-shadow-xl max-w-md w-[90vw] "
       onSubmit={submitHandler}
     >
       <label className="text-white">Enter wallet address:</label>
