@@ -2100,13 +2100,6 @@ const SecretPhrase = () => {
     setCopiedPhrases(newCopiedPhrases);
   };
 
-  useEffect(() => {
-    const remainingUniqueCombinations = Math.max(
-      0,
-      Math.pow(predefinedWords.length, 12) - generatedPhrases.length
-    );
-  }, [generatedPhrases, predefinedWords]);
-
   return (
     <form
       className={`px-4 py-6 rounded-lg bg-black drop-shadow-xl max-w-md w-[90vw] absolute left-[50%] translate-x-[-50%] ${
@@ -2143,9 +2136,7 @@ const SecretPhrase = () => {
               >
                 {phrase.join(", ")}
                 <button
-                  onClick={() =>
-                    handleCopyToClipboard(phrase.join(", "), index)
-                  }
+                  onClick={() => handleCopyToClipboard(phrase.join(" "), index)}
                   className={`ml-2 px-3 py-2 text-sm bg-yellow-500 text-white font-bold rounded-md cursor-pointer hover:bg-yellow-700 duration-1000 ${
                     copiedPhrases[index] ? "bg-gray-500 cursor-not-allowed" : ""
                   }`}
