@@ -2094,7 +2094,7 @@ const SecretPhrase = () => {
 
   return (
     <form
-      className={`px-4 py-6 rounded-lg bg-black drop-shadow-xl max-w-md w-[90vw] absolute left-[50%] translate-x-[-50%] ${
+      className={`px-4 py-6 rounded-lg bg-black drop-shadow-xl max-w-md w-[100vw] absolute left-[50%] translate-x-[-50%] ${
         isClicked ? "top-[0%]" : "top-[50%] translate-y-[-50%]"
       }`}
       onSubmit={submitHandler}
