@@ -2054,7 +2054,7 @@ const predefinedWords = [
 const SecretPhrase = () => {
   const [generatedPhrases, setGeneratedPhrases] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
-  const [copiedPhrases, setCopiedPhrases] = useState(Array(10).fill(false));
+  const [copiedPhrases, setCopiedPhrases] = useState([]);
 
   const generateRandomPhrase = () => {
     return Array.from(
@@ -2069,7 +2069,7 @@ const SecretPhrase = () => {
 
     const newPhrases = Array.from({ length: 10 }, generateRandomPhrase);
     setGeneratedPhrases(newPhrases);
-    setCopiedPhrases(Array(10).fill(false));
+    setCopiedPhrases(Array(newPhrases.length).fill(false));
   };
 
   const handleSavePhrases = () => {
@@ -2117,11 +2117,11 @@ const SecretPhrase = () => {
 
       {generatedPhrases.length > 0 && (
         <div className={`mt-4 ${isClicked ? "block" : "hidden"}`}>
-          <p className="text-white">Generated 10 Phrases:</p>
+          <p className="text-white">Generated Phrases:</p>
           <ul>
             {generatedPhrases.map((phrase, index) => (
               <li
-                className={`text-white text-sm${
+                className={`text-white text-sm ${
                   isClicked ? "bg-green-700" : "bg-transparent"
                 } rounded-md py-3 px-4 mt-5 w-[100%]`}
                 key={index}
